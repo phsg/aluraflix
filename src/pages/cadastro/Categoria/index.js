@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import PageDefault from '../../../components/PageDefault';
 import { Link } from 'react-router-dom';
 import FormField from '../../../components/FormField';
-import Button from '../../../components/Button';
 
 function CadastroCategoria() {
     const valoresIniciais = {
@@ -29,14 +28,18 @@ function CadastroCategoria() {
     }
 
     useEffect(() => {
-        const URL_TOP = 'http://localhost:3000/categorias';
-        fetch(URL_TOP)
-            .then(async (respostaDoServidor) => {
-                const resposta = await respostaDoServidor.json();
-                setCategorias([
-                    ...resposta,
-                ]);
-            })
+        if (window.location.href.includes('localhost')) {
+            const URL = 'http://localhost:8080/categorias';
+            fetch(URL)
+                .then(async (respostaDoServer) => {
+                    if (respostaDoServer.ok) {
+                        const resposta = await respostaDoServer.json();
+                        setCategorias(resposta);
+                        return;
+                    }
+                    throw new Error('Não foi possível pegar os dados');
+                })
+        }
     }, []);
 
     return (
@@ -60,7 +63,7 @@ function CadastroCategoria() {
                 <FormField
                     label="Descrição"
                     type="textarea"
-                    name="textarea"
+                    name="descricao"
                     value={values.descricao}
                     onChange={handleOnChange}
                 />
@@ -75,17 +78,17 @@ function CadastroCategoria() {
                     Cadastrar
                 </Button>
             </form>
-
+            {/* 
             {categorias.length === 0 && (
                 <div>
                     loading...
                 </div>
-            )}
+            )} */}
             <ul>
                 {categorias.map((categoria, indice) => {
                     return (
-                        <li key={`${categoria.nome}`}>
-                            {categoria.nome}
+                        <li key={`${categoria}${indice}`}>
+                            {categoria.titulo}
                         </li>
                     )
                 })}
