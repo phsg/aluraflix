@@ -45,6 +45,20 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.5",
-    "eslint-plugin-react-hooks": "^4.0.8"
-  }
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "json-server": "^0.16.1"
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phsg/aluraflix.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phsg/aluraflix/issues"
+  },
+  "homepage": "https://github.com/phsg/aluraflix#readme"
 }

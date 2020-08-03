@@ -12,5 +12,19 @@
             "descricao": "Uma categoria bacana",
             "cor": "#cbdifb"
         }
+    ],
+    "videos": [
+        {
+            "id": 1,
+            "categoriaId": 1,
+            "titulo": "Aula 4",
+            "url": "https://youtu.be/hhQ3RtvmfEg"
+        },
+        {
+            "id": 2,
+            "categoriaId": 1,
+            "titulo": "Aula 5!",
+            "url": "https://youtu.be/hhQ3RtvmfEg"
+        }
     ]
 }
