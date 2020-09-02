@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import FormField from '../../../components/FormField';
 import ButtonLink from '../../../components/ButtonLink';
 import useForm from '../../../hooks/useForm';
+import categoriasRepository from '../../../repositories/categorias';
 
 function CadastroCategoria() {
     const valoresIniciais = {
@@ -16,19 +17,8 @@ function CadastroCategoria() {
     const [categorias, setCategorias] = useState([]);
 
     useEffect(() => {
-        if (window.location.href.includes('localhost')) {
-            const URL = 'http://localhost:8080/categorias';
-            fetch(URL)
-                .then(async (respostaDoServer) => {
-                    if (respostaDoServer.ok) {
-                        const resposta = await respostaDoServer.json();
-                        setCategorias(resposta);
-                        return;
-                    }
-                    throw new Error('Não foi possível pegar os dados');
-                })
-        }
-    }, []);
+        categoriasRepository.getAllWithVideos();
+    });
 
     return (
         <PageDefault>
